@@ -1,0 +1,27 @@
+<div class="main-container">
+    <div class="idea-grid">
+        <div *ngFor="let tempIdea of ideas" class="idea-box">
+            <h5>Title:</h5>
+            <div class="title">
+                <p>{{ tempIdea.title }}</p>
+            </div>
+            
+            
+            <h5>Categories:</h5>
+            <div class="categories">
+                <ng-container *ngFor="let tempCat of tempIdea.categories; let i = index">
+                    <p *ngIf="i == tempIdea.categories.length - 1, else withPipe">{{ tempCat.name }}</p>
+                    <ng-template #withPipe><p>{{ tempCat.name }}&nbsp;|&nbsp;</p></ng-template>
+                </ng-container>
+            </div>
+
+            <div class="date">
+                <p *ngIf="tempIdea?.idea, else isProblem" style="font-style: italic;">IDEA</p>
+                <ng-template #isProblem><p style="font-style: italic;">PROBLEM</p></ng-template>
+
+                <p>Erstelldatum: {{ tempIdea.dateCreated | date: 'mediumDate' }}</p>
+            </div>
+        </div>
+    </div> 
+</div>
+
