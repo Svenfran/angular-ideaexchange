@@ -6,6 +6,8 @@ import { IdeaListComponent } from './components/idea-list/idea-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule, Routes } from '@angular/router';
+import { IdeaCategoryMenuComponent } from './components/idea-category-menu/idea-category-menu.component';
+import { TopNavbarComponent } from './components/top-navbar/top-navbar.component';
 
 const routes: Routes = [
   { path: 'ideas/:id/categories', component: IdeaListComponent },
@@ -16,7 +18,9 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    IdeaListComponent
+    IdeaListComponent,
+    IdeaCategoryMenuComponent,
+    TopNavbarComponent
   ],
   imports: [
     RouterModule.forRoot(routes),

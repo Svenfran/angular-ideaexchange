@@ -1,0 +1,12 @@
+.filter-sidebar {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    padding: 100px 30px;
+    height: 100vh;
+    background: white;
+    font-size: small;
+    z-index: 1;
+    left: 0;
+}
+

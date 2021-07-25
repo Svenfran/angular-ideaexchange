@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Idea } from '../common/idea';
 import { map } from 'rxjs/operators';
+import { Category } from '../common/category';
 
 @Injectable({
   providedIn: 'root'
@@ -31,11 +32,9 @@ export class IdeaServiceService {
     return this.httpClient.get<Idea>(ideaUrl);
   }
 
-
- }
-
-interface GetResponseIdeas {
-  _embedded: {
-    ideas: Idea[];
+  getIdeaCategories(): Observable<Category[]> {
+    return this.httpClient.get<Category[]>(this.categoryUrl);
   }
+
+
 }
