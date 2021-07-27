@@ -33,7 +33,9 @@
 
 .categories a, .title a{
     color: #222;
-    text-decoration: none;  
+    text-decoration: none;
+    font-size: 12px;
+    margin-bottom: 8px;
 }
 
 .categories a:hover, .title a:hover {

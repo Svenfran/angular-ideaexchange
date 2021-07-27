@@ -21,7 +21,7 @@ export class IdeaServiceService {
   //   );
   // }
 
-  // what is the difference between those methodes?
+  // what is the difference between those methodes? => above is needed when using spirng.rest?!
 
   getIdeaList(): Observable<Idea[]> {
     return this.httpClient.get<Idea[]>(this.baseUrl);
@@ -34,6 +34,11 @@ export class IdeaServiceService {
 
   getIdeaCategories(): Observable<Category[]> {
     return this.httpClient.get<Category[]>(this.categoryUrl);
+  }
+
+  getIdeasByCategory(theCategoryId: number): Observable<Idea[]> {
+    const ideaByCatUrl = `${this.categoryUrl}/${theCategoryId}/ideas`;
+    return this.httpClient.get<Idea[]>(ideaByCatUrl);
   }
 
 

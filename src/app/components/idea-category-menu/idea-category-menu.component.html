@@ -1,10 +1,31 @@
-<div class="">
-    <nav class="filter-sidebar">
-        <ul class="list-unstyled navbar-list">
-            <li *ngFor="let tempIdeaCategory of ideaCategories">
+<nav class="filter-sidebar">
+    <div class="d-flex mb-4">
+        
+        <button type="submit" class="btn btn-default">
+            <i class="fas fa-search"></i>
+        </button>
+    
+    </div>
+    
+    <div class="d-flex flex-column">
+        <hr>
+        <p><strong>Idea or Problem:</strong></p>
+        <div class="d-flex justify-content-between">
+            <label class="cb">
+                IDEA
+            </label>
+            <label class="cb">
+                PROBLEM
+            </label>
+        </div>
+        <hr>
+        <p><strong>Categories:</strong></p>
+        <ul class="list-unstyled navbar-list filter-categories">
+            <li *ngFor="let tempIdeaCategory of ideaCategories" class="mt-1">
                 {{ tempIdeaCategory.name }}
-                <!-- <a routerLink="/category/{{ tempProductCategory.id }}/{{ tempProductCategory.categoryName }}" routerLinkActive="active-link">{{ tempProductCategory.categoryName}}</a> -->
+                <!-- <a routerLink="/categories/{{tempIdeaCategory.id}}/ideas">{{ tempIdeaCategory.name }}</a> -->
             </li>
         </ul>
-    </nav>
-</div>
+    </div>
+</nav>
+

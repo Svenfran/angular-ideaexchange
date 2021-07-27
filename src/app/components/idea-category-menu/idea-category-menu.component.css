@@ -10,3 +10,11 @@
     left: 0;
 }
 
+.filter-categories {
+    display: flex;
+    flex-direction: column;
+    height: 300px;
+    overflow-y: scroll;
+
+}
+

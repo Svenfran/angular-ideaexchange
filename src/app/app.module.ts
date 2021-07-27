@@ -10,9 +10,11 @@ import { IdeaCategoryMenuComponent } from './components/idea-category-menu/idea-
 import { TopNavbarComponent } from './components/top-navbar/top-navbar.component';
 
 const routes: Routes = [
-  { path: 'ideas/:id/categories', component: IdeaListComponent },
+  { path: 'categories/:id/ideas', component: IdeaListComponent },
   { path: 'ideas/:id', component: IdeaListComponent },
-  { path: 'ideas', component: IdeaListComponent }
+  { path: 'ideas', component: IdeaListComponent },
+  { path: '', redirectTo: '/ideas', pathMatch: 'full'},
+  { path: '**', redirectTo: '/ideas', pathMatch: 'full'}
 ];
 
 @NgModule({

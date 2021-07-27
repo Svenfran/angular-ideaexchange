@@ -1,13 +1,14 @@
 <app-top-navbar></app-top-navbar>
-<div class="contianer">
-    <!-- MENU SIDEBAR-->
-    <aside class="content">
-        <div class="logo">
-            <a routerLink="/ideas">
-            <img src="" alt="" class="img-responsive">
-            </a>
-        </div>
-        <app-idea-category-menu></app-idea-category-menu>
-    </aside>
-    <app-idea-list></app-idea-list>
-</div>
+
+<app-idea-category-menu></app-idea-category-menu>
+
+<!-- MAIN CONTENT -->
+<router-outlet></router-outlet>
+
+<!-- <footer>
+    <ul>
+      <li><a href="#">About Us</a></li>
+      <li><a href="#">Contact Us</a></li>
+      <li><a href="#">Help</a></li>
+    </ul>
+</footer> -->
