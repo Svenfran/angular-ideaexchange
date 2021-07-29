@@ -44,3 +44,109 @@ footer ul li{
 footer ul {
   margin-bottom: 0;
 }
+
+.symbols {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  font-size: 14px
+}
+
+.edit-delete {
+  display: flex;
+  justify-content: space-between;
+  width: 35px;
+}
+
+.edit-delete a {
+  color: #222;
+}
+
+#tooltip-text {
+  position: absolute;
+  border: 1px solid #ccc;
+  display: none;
+  background: white;
+  font-family: "Nunito", "Helvetica", "sans-serif";
+  font-size: 12px;
+  font-weight: normal;
+  margin-top: 10px;
+  padding: 5px;
+  border-radius: 4px;
+  bottom: 20px;
+  z-index: 1;
+}
+
+.fa-trash-alt:hover #tooltip-text {
+  display: block;
+}
+.fa-pen:hover #tooltip-text {
+  display: block;
+}
+.fa-lock:hover #tooltip-text {
+  display: block;
+  bottom: 25px;
+}
+
+.add:hover #tooltip-text {
+  display: block;
+  bottom: 35px;
+}
+
+.fa-chevron-up:hover #tooltip-text {
+  display: block;
+}
+
+.fa-chevron-down:hover #tooltip-text {
+  display: block;
+}
+
+.fa-times:hover #tooltip-text {
+  display: block;
+}
+
+i {
+  position: relative;
+}
+
+.categories, .title {
+  display: flex;
+}
+
+.categories p, .title p{
+  font-size: 12px;
+}
+
+.categories a {
+  color: #222;
+  text-decoration: none;
+  font-size: 12px;
+  margin-bottom: 8px;
+  white-space: nowrap;
+}
+
+.title a {
+  color: #222;
+  text-decoration: none;
+  font-size: 12px;
+  margin-bottom: 8px;
+}
+
+.categories a:hover, .title a:hover {
+  color: #0091AD;
+}
+
+.date {
+  display: flex;
+  justify-content: space-between;
+}
+
+.date p {
+  color: lightslategray;
+  font-size: 12px;
+}
+
+.date a {
+  color: lightslategray;
+  text-decoration: none;
+}

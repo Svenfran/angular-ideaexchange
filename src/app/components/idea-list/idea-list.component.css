@@ -4,7 +4,7 @@
     border-radius: 4px;
     padding: 12px;
     box-shadow: 0 0 15px rgba(0,0,0,0.2);
-    width: 450px;
+    width: 400px;
 }
 
 .idea-box h5 {
@@ -20,42 +20,9 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 16px;
-    margin: 0 auto;
+    margin: 0 25vw auto;
 }
 
-.categories, .title {
-    display: flex;
-}
-
-.categories p, .title p{
-    font-size: 12px;
-}
-
-.categories a, .title a{
-    color: #222;
-    text-decoration: none;
-    font-size: 12px;
-    margin-bottom: 8px;
-}
-
-.categories a:hover, .title a:hover {
-    color: #0091AD;
-}
-
-.date {
-    display: flex;
-    justify-content: space-between;
-}
-
-.date p {
-    color: lightslategray;
-    font-size: 12px;
-}
-
-.date a {
-    color: lightslategray;
-    text-decoration: none;
-}
 
 @media(max-width: 1481px) {
     .idea-grid {

@@ -18,3 +18,12 @@
 
 }
 
+#query {
+    font-size: small;
+}
+
+.inactive {
+    position: absolute;
+    left: -100%;
+    transition: all 0s ease-in-out;
+}

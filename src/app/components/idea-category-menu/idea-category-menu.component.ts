@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Category } from 'src/app/common/category';
-import { IdeaServiceService } from 'src/app/services/idea.service';
+import { IdeaService } from 'src/app/services/idea.service';
 
 @Component({
   selector: 'app-idea-category-menu',
@@ -11,7 +11,7 @@ export class IdeaCategoryMenuComponent implements OnInit {
 
   ideaCategories: Category[];
   
-  constructor(private ideaService: IdeaServiceService) { }
+  constructor(private ideaService: IdeaService) { }
 
   ngOnInit(): void {
     this.listIdeaCategories();

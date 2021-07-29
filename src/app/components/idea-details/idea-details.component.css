@@ -1,0 +1,55 @@
+.card-details-body {
+    /* width: 50vw; */
+    margin: 0 auto 12px auto;
+    background: white;
+    border-radius: 4px;
+    padding: 16px 50px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.card-details-body h5 {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.card-details-body p {
+    font-size: small;
+}
+
+.card-details-body a {
+    color: #222;
+}
+
+.info {
+    display: flex;
+    justify-content: space-between;
+}
+
+.info p, a {
+    text-decoration: none;
+    color: #0091AD;
+}
+
+.btn-add-file {
+    border: 1px solid darkgray;
+    color: #222;
+    background-color: white;
+    padding: 0 8px;
+    border-radius: 3px;
+    font-size: small;
+    font-weight: normal;
+    margin-left: 1rem;
+}
+
+.file-label {
+    background-color: #f6ae2d;
+    color: white;
+    padding: 0 8px;
+    border-radius: 3px;
+    cursor: pointer;
+    margin: 0 1rem 0 0;
+}
+
+.attachments {
+    display: flex;
+}

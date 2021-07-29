@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Idea } from 'src/app/common/idea';
-import { IdeaServiceService } from 'src/app/services/idea.service';
+import { IdeaService } from 'src/app/services/idea.service';
 
 @Component({
   selector: 'app-idea-list',
@@ -12,7 +12,7 @@ export class IdeaListComponent implements OnInit {
 
   ideas: Idea[] = [];
 
-  constructor(private ideaService: IdeaServiceService, private route: ActivatedRoute) { }
+  constructor(private ideaService: IdeaService, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe(() => {

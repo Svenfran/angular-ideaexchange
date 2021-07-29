@@ -8,7 +8,7 @@ import { Category } from '../common/category';
 @Injectable({
   providedIn: 'root'
 })
-export class IdeaServiceService {
+export class IdeaService {
 
   private baseUrl = 'http://localhost:8080/api/ideas';
   private categoryUrl = 'http://localhost:8080/api/categories';

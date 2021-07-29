@@ -1,9 +1,19 @@
-<div class="main-container pt-5">
-    <div class="idea-grid pt-5">
+<div class="content">
+    <div class="idea-grid">
         <div *ngFor="let tempIdea of ideas" class="idea-box">
+            <div class="symbols">
+                <div class="edit-delete">
+                </div>
+                <i *ngIf="tempIdea.isOpen" class="fas fa-lock" style="color: white"></i>
+            
+                <i *ngIf="!tempIdea.isOpen" class="fas fa-lock">
+                    <span id="tooltip-text" style="white-space: nowrap;">Contact for more details</span>
+                </i>
+            </div>
+       
             <h5>Title:</h5>
             <div class="title">
-                <p>{{ tempIdea.title }}</p>
+                <a routerLink="/ideas/{{tempIdea.id}}">{{ tempIdea.title }}</a>
             </div>
             
             
@@ -24,8 +34,8 @@
                 <p *ngIf="tempIdea?.idea, else isProblem" style="font-style: italic;">IDEA</p>
                 <ng-template #isProblem><p style="font-style: italic;">PROBLEM</p></ng-template>
 
-                <p>Erstelldatum: {{ tempIdea.dateCreated | date: 'mediumDate' }}</p>
+                <p>Date Created: {{ tempIdea.dateCreated | date: 'mediumDate' }}</p>
             </div>
         </div>
-    </div> 
+    </div>
 </div>

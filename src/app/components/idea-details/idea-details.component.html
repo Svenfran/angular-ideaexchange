@@ -1,0 +1,53 @@
+<div class="content">
+    <div class="container">
+        <div class="card-details-body">
+            <div class="symbols">
+                <div class="edit-delete">
+                    <i class="fas fa-pen">
+                        <span id="tooltip-text">edit</span>
+                    </i>
+                    <i class="far fa-trash-alt">
+                        <span id="tooltip-text">delete</span>
+                    </i>
+                </div>
+                <i *ngIf="idea?.isOpen" class="fas fa-lock" style="color: white"></i>
+                <i *ngIf="!idea?.isOpen" class="fas fa-lock"></i>
+            </div>
+            <h5>Title:</h5>
+            <p><strong>{{idea.title}}</strong></p>
+            <div class="categories">
+                <ng-container *ngFor="let tempCat of idea.categories; let i = index">
+                    <a *ngIf="i == idea.categories.length - 1, else withPipe"
+                        routerLink="/categories/{{tempCat.id}}/ideas">
+                        {{ tempCat.name }}
+                    </a>
+                    <ng-template #withPipe>
+                        <a routerLink="/categories/{{tempCat.id}}/ideas">{{ tempCat.name }}</a>
+                        <p>&nbsp;|&nbsp;</p>
+                    </ng-template>
+                </ng-container>
+            </div>
+            <h5>Description:</h5>
+            <ng-container *ngIf="idea?.isOpen">
+                <p class="text-justify">{{idea.description}}</p>
+                <h5>Attachments:</h5>
+                <div class="add-attachments" style="font-size: small;">
+
+                </div>
+                <div class="attachments">
+                    <p>Picture.png | </p>
+                    <p>Text.txt | </p>
+                    <p>Pdf-Doc.pdf | </p>
+                    <p>Audio.mp3</p>
+                </div>
+            </ng-container>
+            <p *ngIf="!idea?.isOpen"><strong>Please contact the owner for more information!</strong></p>
+            <div class="info">
+                <p>Owner: Company / Private</p>
+                <p>Contact the owner</p>
+                <p>Date Created: {{idea.dateCreated | date: 'mediumDate'}} </p>
+            </div>
+            <a routerLink="/ideas" style="font-size: small;"><< BACK</a>
+        </div>
+    </div>
+</div>
