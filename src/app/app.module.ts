@@ -9,10 +9,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { IdeaCategoryMenuComponent } from './components/idea-category-menu/idea-category-menu.component';
 import { TopNavbarComponent } from './components/top-navbar/top-navbar.component';
 import { IdeaDetailsComponent } from './components/idea-details/idea-details.component';
+import { FormsModule } from '@angular/forms';
 
 const routes: Routes = [
   { path: 'categories/:id/ideas', component: IdeaListComponent },
   { path: 'ideas/:id', component: IdeaDetailsComponent },
+  { path: 'ideas/delete/:id', component: IdeaDetailsComponent },
   { path: 'ideas', component: IdeaListComponent },
   { path: '', redirectTo: '/ideas', pathMatch: 'full'},
   { path: '**', redirectTo: '/ideas', pathMatch: 'full'}
@@ -30,6 +32,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     BrowserModule,
     HttpClientModule,
+    FormsModule,
     NgbModule
   ],
   providers: [],

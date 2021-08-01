@@ -1,14 +1,19 @@
 <div class="content">
-    <div class="container">
+    <div class="container" id="main-container">
         <div class="card-details-body">
             <div class="symbols">
                 <div class="edit-delete">
-                    <i class="fas fa-pen">
-                        <span id="tooltip-text">edit</span>
-                    </i>
-                    <i class="far fa-trash-alt">
-                        <span id="tooltip-text">delete</span>
-                    </i>
+                    <a (click)="onOpenModal(idea, 'edit')" class="tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Edit">
+                        <i class="fas fa-pen">
+                            <span id="tooltip-text">edit</span>
+                        </i>
+                    </a>
+                    <!-- <a (click)="onOpenModal(idea, 'delete')" class="tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Delete"> -->
+                    <a (click)="onDeleteIdea(idea.id, idea.title)">
+                        <i class="far fa-trash-alt">
+                            <span id="tooltip-text">delete</span>
+                        </i>
+                    </a>
                 </div>
                 <i *ngIf="idea?.isOpen" class="fas fa-lock" style="color: white"></i>
                 <i *ngIf="!idea?.isOpen" class="fas fa-lock"></i>
@@ -49,5 +54,26 @@
             </div>
             <a routerLink="/ideas" style="font-size: small;"><< BACK</a>
         </div>
+    </div>
+</div>
+
+<!-- Delete Modal -->
+<div class="modal fade" id="deleteIdeaModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+       <div class="modal-content">
+          <div class="modal-header">
+             <h5 class="modal-title" id="deleteModalLabel">Delete Idea</h5>
+             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+             <span aria-hidden="true">&times;</span>
+             </button>
+          </div>
+          <div class="modal-body">
+             <p>Are you sure you want to delete Idea {{idea?.title}}?</p>
+             <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                <!-- <button (click)="onDeleteIdea(idea?.id)" class="btn btn-danger" data-dismiss="modal">Yes</button> -->
+             </div>
+          </div>
+       </div>
     </div>
 </div>

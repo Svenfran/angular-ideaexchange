@@ -60,6 +60,7 @@ footer ul {
 
 .edit-delete a {
   color: #222;
+  cursor: pointer;
 }
 
 #tooltip-text {

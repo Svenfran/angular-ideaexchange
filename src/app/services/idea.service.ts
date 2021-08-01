@@ -41,5 +41,10 @@ export class IdeaService {
     return this.httpClient.get<Idea[]>(ideaByCatUrl);
   }
 
+  deleteIdea(theIdeaId: number): Observable<void> {
+    const deleteIdeaUrl = `${this.baseUrl}/delete/${theIdeaId}`;
+    return this.httpClient.delete<void>(deleteIdeaUrl);
+  }
+
 
 }
