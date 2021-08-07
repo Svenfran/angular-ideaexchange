@@ -1,9 +1,25 @@
 <app-top-navbar></app-top-navbar>
 
-<app-idea-category-menu></app-idea-category-menu>
+<mat-sidenav-container class="content">
+  <mat-sidenav #sidenav mode="side" [(opened)]="opened">
+    <app-idea-category-menu></app-idea-category-menu>
+  </mat-sidenav>
+  
+  <mat-sidenav-content>
+    <div (click)="sidenav.toggle()" 
+        style="position: fixed; 
+              top: 80px; 
+              font-size: 24px;
+              color: rgb(184, 184, 184);
+              cursor: pointer;">
+      <i class="fas fa-bars"></i>
+    </div>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
 
-<!-- MAIN CONTENT -->
-<router-outlet></router-outlet>
+
+
 
 <!-- <footer>
     <ul>

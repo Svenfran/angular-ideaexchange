@@ -1,41 +1,44 @@
 <div class="content">
-    <div class="idea-grid">
-        <div *ngFor="let tempIdea of ideas" class="idea-box">
-            <div class="symbols">
-                <div class="edit-delete">
+    <div class="container">
+        <div class="idea-grid">
+            <div *ngFor="let tempIdea of ideas" class="idea-box">
+                <div class="symbols">
+                    <div class="edit-delete">
+                    </div>
+                    <i *ngIf="tempIdea.isOpen" class="fas fa-lock" style="color: white"></i>
+                
+                    <i *ngIf="!tempIdea.isOpen" class="fas fa-lock">
+                        <span id="tooltip-text" style="white-space: nowrap;">Contact for more details</span>
+                    </i>
                 </div>
-                <i *ngIf="tempIdea.isOpen" class="fas fa-lock" style="color: white"></i>
-            
-                <i *ngIf="!tempIdea.isOpen" class="fas fa-lock">
-                    <span id="tooltip-text" style="white-space: nowrap;">Contact for more details</span>
-                </i>
-            </div>
-       
-            <h5>Title:</h5>
-            <div class="title">
-                <a routerLink="/ideas/{{tempIdea.id}}">{{ tempIdea.title }}</a>
-            </div>
-            
-            
-            <h5>Categories:</h5>
-            <div class="categories">
-                <ng-container *ngFor="let tempCat of tempIdea.categories; let i = index">
-                    <a *ngIf="i == tempIdea.categories.length - 1, else withPipe"
-                        routerLink="/categories/{{tempCat.id}}/ideas">
-                        {{ tempCat.name }}
-                    </a>
-                    <ng-template #withPipe>
-                        <a routerLink="/categories/{{tempCat.id}}/ideas">{{ tempCat.name }}</a>
-                        <p>&nbsp;|&nbsp;</p>
-                    </ng-template>
-                </ng-container>
-            </div>
-            <div class="date">
-                <p *ngIf="tempIdea?.idea, else isProblem" style="font-style: italic;">IDEA</p>
-                <ng-template #isProblem><p style="font-style: italic;">PROBLEM</p></ng-template>
-
-                <p>Date Created: {{ tempIdea.dateCreated | date: 'mediumDate' }}</p>
+           
+                <h5>Title:</h5>
+                <div class="title">
+                    <a routerLink="/ideas/{{tempIdea.id}}">{{ tempIdea.title }}</a>
+                </div>
+                
+                
+                <h5>Categories:</h5>
+                <div class="categories">
+                    <ng-container *ngFor="let tempCat of tempIdea.categories; let i = index">
+                        <a *ngIf="i == tempIdea.categories.length - 1, else withPipe"
+                            routerLink="/categories/{{tempCat.id}}/ideas">
+                            {{ tempCat.name }}
+                        </a>
+                        <ng-template #withPipe>
+                            <a routerLink="/categories/{{tempCat.id}}/ideas">{{ tempCat.name }}</a>
+                            <p>&nbsp;|&nbsp;</p>
+                        </ng-template>
+                    </ng-container>
+                </div>
+                <div class="date">
+                    <p *ngIf="tempIdea?.idea, else isProblem" style="font-style: italic;">IDEA</p>
+                    <ng-template #isProblem><p style="font-style: italic;">PROBLEM</p></ng-template>
+    
+                    <p>Date Created: {{ tempIdea.dateCreated | date: 'mediumDate' }}</p>
+                </div>
             </div>
         </div>
     </div>
 </div>
+

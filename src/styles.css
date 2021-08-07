@@ -4,6 +4,7 @@ body, html {
     scroll-behavior: smooth;
     font-family: 'Montserrat', sans-serif;
     background-color: #F4F4F4;
+    height: 100%;
 }
 
 .main-container {
@@ -151,3 +152,4 @@ i {
   color: lightslategray;
   text-decoration: none;
 }
+

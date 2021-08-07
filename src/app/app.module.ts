@@ -10,6 +10,8 @@ import { IdeaCategoryMenuComponent } from './components/idea-category-menu/idea-
 import { TopNavbarComponent } from './components/top-navbar/top-navbar.component';
 import { IdeaDetailsComponent } from './components/idea-details/idea-details.component';
 import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 const routes: Routes = [
   { path: 'categories/:id/ideas', component: IdeaListComponent },
@@ -33,7 +35,9 @@ const routes: Routes = [
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    NgbModule
+    NgbModule,
+    BrowserAnimationsModule,
+    MatSidenavModule
   ],
   providers: [],
   bootstrap: [AppComponent]

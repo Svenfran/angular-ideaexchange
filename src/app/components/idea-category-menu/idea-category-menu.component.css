@@ -1,14 +1,3 @@
-.filter-sidebar {
-    display: flex;
-    flex-direction: column;
-    position: fixed;
-    padding: 100px 30px;
-    height: 100vh;
-    background: white;
-    font-size: small;
-    z-index: 1;
-    left: 0;
-}
 
 .filter-categories {
     display: flex;
@@ -22,8 +11,28 @@
     font-size: small;
 }
 
+.hide-button {
+    position: fixed;
+    top: 80px;
+    color: lightgray;
+    font-size: 22px;
+    opacity: 1;
+}
+
+.hide-button i {
+    cursor: pointer;
+}
+
 .inactive {
     position: absolute;
     left: -100%;
     transition: all 0s ease-in-out;
+}
+
+.arrow-inactive {
+    left: 10px !important;
+}
+
+.hide {
+    display: none;
 }

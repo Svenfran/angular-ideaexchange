@@ -20,6 +20,10 @@
     color: #222;
 }
 
+.card-details-body a:hover {
+    color: #0091AD;
+}
+
 .info {
     display: flex;
     justify-content: space-between;

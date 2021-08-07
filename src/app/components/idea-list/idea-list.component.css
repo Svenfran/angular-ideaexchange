@@ -5,9 +5,11 @@
     padding: 12px;
     box-shadow: 0 0 15px rgba(0,0,0,0.2);
     width: 400px;
+    height: 100%;
 }
 
 .idea-box h5 {
+    font-family: 'Montserrat', sans-serif;
     font-size: 14px;
     font-weight: bold;
 }
@@ -17,10 +19,10 @@
 }
 
 .idea-grid {
+    justify-content: center;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 16px;
-    margin: 0 25vw auto;
 }
 
 
