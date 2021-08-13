@@ -20,18 +20,18 @@
     color: #222;
 }
 
-.card-details-body a:hover {
-    color: #0091AD;
-}
-
 .info {
     display: flex;
     justify-content: space-between;
 }
 
-.info p, a {
+.info a {
     text-decoration: none;
     color: #0091AD;
+}
+
+.info p {
+    color: #222;
 }
 
 .btn-add-file {

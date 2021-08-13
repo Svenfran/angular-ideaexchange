@@ -22,14 +22,21 @@ export class IdeaListComponent implements OnInit {
 
   listIdeas() {
     const hasCategoryId: boolean = this.route.snapshot.paramMap.has('id');
+    const hasQuery: boolean = this.route.snapshot.paramMap.has('query');
     
     if (hasCategoryId) {
       this.listIdeasByCategory();
+    } else if (hasQuery) {
+      this.handleSearchIdeas();
     } else {
       this.listAllIdeas();
     }
   }
 
+  handleSearchIdeas() {
+    const theQuery: string = this.route.snapshot.paramMap.get('query');
+    this.ideaService.searchIdeas(theQuery).subscribe(this.processResult());
+  }
 
   listIdeasByCategory() { 
     const categoryId = +this.route.snapshot.paramMap.get('id');

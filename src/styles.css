@@ -135,7 +135,7 @@ i {
 }
 
 .categories a:hover, .title a:hover {
-  color: #0091AD;
+  color: #0091AD !important;
 }
 
 .date {
@@ -153,3 +153,6 @@ i {
   text-decoration: none;
 }
 
+.mat-drawer-inner-container{ 
+  overflow: hidden !important;
+}

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Category } from 'src/app/common/category';
 import { IdeaService } from 'src/app/services/idea.service';
 
@@ -11,7 +12,7 @@ export class IdeaCategoryMenuComponent implements OnInit {
 
   ideaCategories: Category[];
   
-  constructor(private ideaService: IdeaService) { }
+  constructor(private ideaService: IdeaService, private router: Router) { }
 
   ngOnInit(): void {
     this.listIdeaCategories();
@@ -24,6 +25,12 @@ export class IdeaCategoryMenuComponent implements OnInit {
         console.log(this.ideaCategories);
       }
     );
+  }
+
+  doSearch(value: string) {
+    console.log("value= " + value);
+     // Route the data to our "search" route. It will be handled by the IdeaListComponent
+    this.router.navigateByUrl(`/search/${value}`);
   }
   
 }

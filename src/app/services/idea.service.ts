@@ -11,6 +11,7 @@ import { Category } from '../common/category';
 export class IdeaService {
 
   private baseUrl = 'http://localhost:8080/api/ideas';
+  private baseSearchUrl = 'http://localhost:8080/api/search';
   private categoryUrl = 'http://localhost:8080/api/categories';
 
   constructor(private httpClient: HttpClient) { }
@@ -46,5 +47,9 @@ export class IdeaService {
     return this.httpClient.delete<void>(deleteIdeaUrl);
   }
 
+  searchIdeas(theQuery: string): Observable<Idea[]> {
+    const searchUrl = `${this.baseSearchUrl}/findIdeasByQuery?query=${theQuery}`;
+    return this.httpClient.get<Idea[]>(searchUrl);
+  }
 
 }
