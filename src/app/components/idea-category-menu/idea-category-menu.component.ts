@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { Category } from 'src/app/common/category';
 import { IdeaService } from 'src/app/services/idea.service';
@@ -11,7 +11,9 @@ import { IdeaService } from 'src/app/services/idea.service';
 export class IdeaCategoryMenuComponent implements OnInit {
 
   ideaCategories: Category[];
-  
+  @ViewChild('queryInput') inputName;
+
+
   constructor(private ideaService: IdeaService, private router: Router) { }
 
   ngOnInit(): void {
@@ -33,4 +35,7 @@ export class IdeaCategoryMenuComponent implements OnInit {
     this.router.navigateByUrl(`/search/${value}`);
   }
   
+  handleClear() {
+    this.inputName.nativeElement.value = "";
+  }
 }

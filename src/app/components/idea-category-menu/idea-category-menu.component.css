@@ -36,3 +36,13 @@
 .hide {
     display: none;
 }
+
+.clear-btn {
+    color: lightgrey;
+    position: absolute;
+    left: 225px;
+}
+
+.clear-btn i {
+    top: 7px;
+}

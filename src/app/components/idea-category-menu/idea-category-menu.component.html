@@ -7,6 +7,9 @@
         <button (click)="doSearch(queryInput.value)" class="btn btn-default">
             <i class="fas fa-search"></i>
         </button>
+        <div (click)="handleClear()" class="clear-btn">
+            <i class="fa fa-times"></i>
+        </div>
     </div>
     
     <div class="d-flex flex-column">
@@ -25,7 +28,6 @@
         <ul class="list-unstyled navbar-list filter-categories">
             <li *ngFor="let tempIdeaCategory of ideaCategories" class="mt-1">
                 {{ tempIdeaCategory.name }}
-                <!-- <a routerLink="/categories/{{tempIdeaCategory.id}}/ideas">{{ tempIdeaCategory.name }}</a> -->
             </li>
         </ul>
     </div>
