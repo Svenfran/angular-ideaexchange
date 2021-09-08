@@ -23,16 +23,6 @@
     cursor: pointer;
 }
 
-.inactive {
-    position: absolute;
-    left: -100%;
-    transition: all 0s ease-in-out;
-}
-
-.arrow-inactive {
-    left: 10px !important;
-}
-
 .hide {
     display: none;
 }
@@ -40,7 +30,7 @@
 .clear-btn {
     color: lightgrey;
     position: absolute;
-    left: 225px;
+    left: 190px;
 }
 
 .clear-btn i {

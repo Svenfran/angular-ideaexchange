@@ -52,4 +52,9 @@ export class IdeaService {
     return this.httpClient.get<Idea[]>(searchUrl);
   }
 
+  filterIdeas(theCategoryIds: string, boolIsIdea: string): Observable<Idea[]> {
+    const filterUrl = `${this.baseSearchUrl}/findIdeasByCategory?categoryIds=${theCategoryIds}&isIdea=${boolIsIdea}`;
+    return this.httpClient.get<Idea[]>(filterUrl);
+  }
+
 }

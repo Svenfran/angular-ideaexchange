@@ -9,7 +9,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { IdeaCategoryMenuComponent } from './components/idea-category-menu/idea-category-menu.component';
 import { TopNavbarComponent } from './components/top-navbar/top-navbar.component';
 import { IdeaDetailsComponent } from './components/idea-details/idea-details.component';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSidenavModule } from '@angular/material/sidenav';
 
@@ -19,6 +19,7 @@ const routes: Routes = [
   { path: 'ideas/delete/:id', component: IdeaDetailsComponent },
   { path: 'ideas', component: IdeaListComponent },
   { path: 'search/:query', component: IdeaListComponent },
+  { path: 'search/:categoryIds/:isIdea', component: IdeaListComponent },
   { path: '', redirectTo: '/ideas', pathMatch: 'full'},
   { path: '**', redirectTo: '/ideas', pathMatch: 'full'}
 ];
@@ -35,6 +36,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     BrowserModule,
     HttpClientModule,
+    ReactiveFormsModule,
     FormsModule,
     NgbModule,
     BrowserAnimationsModule,

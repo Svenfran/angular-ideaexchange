@@ -27,7 +27,7 @@ export class IdeaDetailsComponent implements OnInit {
     this.ideaService.getIdea(theIdeaId).subscribe(
       data => {
         this.idea = data;
-        console.log(this.idea);
+        // console.log(this.idea);
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
@@ -41,7 +41,7 @@ export class IdeaDetailsComponent implements OnInit {
     if (confirm(`Delete Idea with Title: ${theIdeaName}?`)) {
       this.ideaService.deleteIdea(theIdeaId).subscribe(
         (data: void) => {
-          console.log(data);
+          // console.log(data);
           this.ideaService.getIdeaList();
           this.router.navigate(["/ideas"]);
         },

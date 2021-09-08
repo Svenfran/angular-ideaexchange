@@ -17,19 +17,32 @@
         <p><strong>Idea or Problem:</strong></p>
         <div class="d-flex justify-content-between">
             <label class="cb">
+                <input type="checkbox"/>
                 IDEA
             </label>
             <label class="cb">
+                <input type="checkbox"/>
                 PROBLEM
             </label>
         </div>
         <hr>
         <p><strong>Categories:</strong></p>
-        <ul class="list-unstyled navbar-list filter-categories">
+        <!-- <ul class="list-unstyled navbar-list filter-categories">
             <li *ngFor="let tempIdeaCategory of ideaCategories" class="mt-1">
                 {{ tempIdeaCategory.name }}
             </li>
-        </ul>
+        </ul> -->
+        <form [formGroup]="form" (ngSubmit)="submitForm()" novalidate>
+            <div class="filter-categories mt-1">
+              <label *ngFor="let tempIdeaCategory of ideaCategories; let i = index">
+                  <input type="checkbox" [value]="tempIdeaCategory.value" (change)="onCheckboxChange($event)"/>
+                  {{ tempIdeaCategory.name }}
+              </label>
+            </div>
+            <input type="submit" value="Filter" class="btn btn-outline-dark btn-sm my-3">
+        </form>
+
     </div>
+    <!-- <button class="btn btn-outline-dark btn-sm my-3">Filter</button> -->
 </nav>
 

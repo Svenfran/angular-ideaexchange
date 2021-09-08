@@ -23,11 +23,14 @@ export class IdeaListComponent implements OnInit {
   listIdeas() {
     const hasCategoryId: boolean = this.route.snapshot.paramMap.has('id');
     const hasQuery: boolean = this.route.snapshot.paramMap.has('query');
+    const hasCategoryIds: boolean = this.route.snapshot.paramMap.has('categoryIds');
     
     if (hasCategoryId) {
       this.listIdeasByCategory();
     } else if (hasQuery) {
       this.handleSearchIdeas();
+    } else if (hasCategoryIds) {
+      this.handleFilterIdeas();
     } else {
       this.listAllIdeas();
     }
@@ -36,6 +39,12 @@ export class IdeaListComponent implements OnInit {
   handleSearchIdeas() {
     const theQuery: string = this.route.snapshot.paramMap.get('query');
     this.ideaService.searchIdeas(theQuery).subscribe(this.processResult());
+  }
+  
+  handleFilterIdeas() {
+    const theCategoryIds: string = this.route.snapshot.paramMap.get('categoryIds');
+    const boolIsIdea: string = this.route.snapshot.paramMap.get('isIdea');
+    this.ideaService.filterIdeas(theCategoryIds, boolIsIdea).subscribe(this.processResult());
   }
 
   listIdeasByCategory() { 
@@ -50,7 +59,7 @@ export class IdeaListComponent implements OnInit {
   processResult() {
     return data => {
       this.ideas = data;
-      console.log(this.ideas);
+      // console.log(this.ideas);
     };
   }
 
