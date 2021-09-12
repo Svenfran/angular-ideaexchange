@@ -17,32 +17,33 @@
         <p><strong>Idea or Problem:</strong></p>
         <div class="d-flex justify-content-between">
             <label class="cb">
-                <input type="checkbox"/>
+                <input type="checkbox" [value]="true"/>
                 IDEA
             </label>
             <label class="cb">
-                <input type="checkbox"/>
+                <input type="checkbox"[value]="false"/>
                 PROBLEM
             </label>
         </div>
         <hr>
         <p><strong>Categories:</strong></p>
-        <!-- <ul class="list-unstyled navbar-list filter-categories">
-            <li *ngFor="let tempIdeaCategory of ideaCategories" class="mt-1">
-                {{ tempIdeaCategory.name }}
-            </li>
-        </ul> -->
+        
         <form [formGroup]="form" (ngSubmit)="submitForm()" novalidate>
             <div class="filter-categories mt-1">
               <label *ngFor="let tempIdeaCategory of ideaCategories; let i = index">
-                  <input type="checkbox" [value]="tempIdeaCategory.value" (change)="onCheckboxChange($event)"/>
+                  <input #checkbox type="checkbox" [value]="tempIdeaCategory.id" (change)="onCheckboxChange($event)"/>
                   {{ tempIdeaCategory.name }}
               </label>
             </div>
-            <input type="submit" value="Filter" class="btn btn-outline-dark btn-sm my-3">
+            <div class="d-flex align-items-center justify-content-between mt-3">
+                <input type="submit" value="Filter" class="btn btn-outline-dark btn-sm my-3">
+                <!-- <label style="cursor: pointer;">
+                    <input type="checkbox" (change)="uncheckAll()" style="display: none;">clear filter
+                </label> -->
+                <p (click)="uncheckAll()" class="m-0" style="cursor: pointer;">clear filter</p>
+            </div>
         </form>
 
     </div>
-    <!-- <button class="btn btn-outline-dark btn-sm my-3">Filter</button> -->
 </nav>
 

@@ -1,8 +1,9 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { Router } from '@angular/router';
 import { Category } from 'src/app/common/category';
 import { IdeaService } from 'src/app/services/idea.service';
-import { FormBuilder, FormGroup, FormArray, FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormArray, FormControl, Validators, ɵNgNoValidate } from '@angular/forms';
+import { element } from 'protractor';
 
 @Component({
   selector: 'app-idea-category-menu',
@@ -14,6 +15,7 @@ export class IdeaCategoryMenuComponent implements OnInit {
   ideaCategories: Category[];
   form: FormGroup;
   @ViewChild('queryInput') inputName;
+  @ViewChildren('checkbox') checkboxes: QueryList<ElementRef>;
 
 
   constructor(private ideaService: IdeaService, private router: Router, private fb: FormBuilder) { 
@@ -43,8 +45,25 @@ export class IdeaCategoryMenuComponent implements OnInit {
     }
   }
 
+  uncheckAll() {
+    const checkedList: FormArray = this.form.get('checkArray') as FormArray;
+    let i: number = 0;
+
+    while (checkedList.length > 0) {
+      checkedList.removeAt(i);
+    }
+    
+    this.checkboxes.forEach((element) => {
+      element.nativeElement.checked = false;
+    });
+
+    this.router.navigateByUrl('/ideas');
+    console.log(checkedList.value);
+  }
+
   submitForm() {
-    console.log(this.form.value)
+    console.log(this.form.value['checkArray'])
+    this.router.navigateByUrl(`/search/${this.form.value['checkArray']}/true`)
   }
 
   listIdeaCategories() {

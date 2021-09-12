@@ -9,7 +9,7 @@ mat-sidenav-container {
 .mat-drawer {
     background-color: white;
     font-family: 'Montserrat', sans-serif;
-    padding: 120px 32px;
+    padding: 100px 32px 20px;
     height: 100%;
     color: #222;
 }
