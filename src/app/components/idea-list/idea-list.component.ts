@@ -44,7 +44,13 @@ export class IdeaListComponent implements OnInit {
   handleFilterIdeas() {
     const theCategoryIds: string = this.route.snapshot.paramMap.get('categoryIds');
     const boolIsIdea: string = this.route.snapshot.paramMap.get('isIdea');
-    this.ideaService.filterIdeas(theCategoryIds, boolIsIdea).subscribe(this.processResult());
+    const hasIsIdea: boolean = this.route.snapshot.paramMap.has('isIdea');
+    console.log("handleFilterIdeas Url has isIdea: " + hasIsIdea);
+    if (hasIsIdea) {
+      this.ideaService.filterIdeasByCategoryIdsAndIdea(theCategoryIds, boolIsIdea).subscribe(this.processResult());
+    } else {
+      this.ideaService.filterIdeasByCategoryIds(theCategoryIds).subscribe(this.processResult());
+    }
   }
 
   listIdeasByCategory() { 

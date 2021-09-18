@@ -18,8 +18,9 @@ const routes: Routes = [
   { path: 'ideas/:id', component: IdeaDetailsComponent },
   { path: 'ideas/delete/:id', component: IdeaDetailsComponent },
   { path: 'ideas', component: IdeaListComponent },
+  { path: 'filter/:categoryIds/:isIdea', component: IdeaListComponent },
+  { path: 'filter/:categoryIds', component: IdeaListComponent },
   { path: 'search/:query', component: IdeaListComponent },
-  { path: 'search/:categoryIds/:isIdea', component: IdeaListComponent },
   { path: '', redirectTo: '/ideas', pathMatch: 'full'},
   { path: '**', redirectTo: '/ideas', pathMatch: 'full'}
 ];

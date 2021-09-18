@@ -15,23 +15,22 @@
     <div class="d-flex flex-column">
         <hr>
         <p><strong>Idea or Problem:</strong></p>
-        <div class="d-flex justify-content-between">
-            <label class="cb">
-                <input type="checkbox" [value]="true"/>
-                IDEA
-            </label>
-            <label class="cb">
-                <input type="checkbox"[value]="false"/>
-                PROBLEM
-            </label>
-        </div>
-        <hr>
-        <p><strong>Categories:</strong></p>
-        
-        <form [formGroup]="form" (ngSubmit)="submitForm()" novalidate>
+        <form [formGroup]="filterForm" (ngSubmit)="submitForm()" novalidate>
+            <div class="d-flex justify-content-between">
+                <label class="cb">
+                    <input #checkbox type="checkbox" [value]="true" (change)="onIdeaCheckboxChange($event)"/>
+                    IDEA
+                </label>
+                <label class="cb">
+                    <input #checkbox type="checkbox"[value]="false" (change)="onIdeaCheckboxChange($event)"/>
+                    PROBLEM
+                </label>
+            </div>
+            <hr>
+            <p><strong>Categories:</strong></p>        
             <div class="filter-categories mt-1">
               <label *ngFor="let tempIdeaCategory of ideaCategories; let i = index">
-                  <input #checkbox type="checkbox" [value]="tempIdeaCategory.id" (change)="onCheckboxChange($event)"/>
+                  <input #checkbox type="checkbox" [value]="tempIdeaCategory.id" (change)="onCategoryCheckboxChange($event)"/>
                   {{ tempIdeaCategory.name }}
               </label>
             </div>
@@ -43,7 +42,6 @@
                 <p (click)="uncheckAll()" class="m-0" style="cursor: pointer;">clear filter</p>
             </div>
         </form>
-
     </div>
 </nav>
 

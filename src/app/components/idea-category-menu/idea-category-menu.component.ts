@@ -13,44 +13,63 @@ import { element } from 'protractor';
 export class IdeaCategoryMenuComponent implements OnInit {
 
   ideaCategories: Category[];
-  form: FormGroup;
+  filterForm: FormGroup;
   @ViewChild('queryInput') inputName;
   @ViewChildren('checkbox') checkboxes: QueryList<ElementRef>;
 
-
   constructor(private ideaService: IdeaService, private router: Router, private fb: FormBuilder) { 
-    this.form = this.fb.group({
-      checkArray: this.fb.array([])
+    this.filterForm = this.fb.group({
+      checkArray: this.fb.array([]),
+      checkIdeaArray: this.fb.array([])
     })
   }
-
+  
+  
   ngOnInit(): void {
     this.listIdeaCategories();
   }
 
-  onCheckboxChange(e) {
-    const checkArray: FormArray = this.form.get('checkArray') as FormArray;
-  
+
+  onCategoryCheckboxChange(e) {
+    const checkArray: FormArray = this.filterForm.get('checkArray') as FormArray;
     if (e.target.checked) {
       checkArray.push(new FormControl(e.target.value));
     } else {
-      let i: number = 0;
-      checkArray.controls.forEach((item: FormControl) => {
+      this.removeItem(checkArray, e);
+    }
+  }
+
+  onIdeaCheckboxChange(e) {
+    const checkIdeaArray: FormArray = this.filterForm.get('checkIdeaArray') as FormArray;
+    if (e.target.checked) {
+      checkIdeaArray.push(new FormControl(e.target.value));
+    } else {
+      this.removeItem(checkIdeaArray, e);
+    }
+  }
+
+  removeItem(array: FormArray, e: any) {
+    let i: number = 0;
+      array.controls.forEach((item: FormControl) => {
         if (item.value == e.target.value) {
-          checkArray.removeAt(i);
+          array.removeAt(i);
           return;
         }
         i++;
       });
-    }
   }
 
   uncheckAll() {
-    const checkedList: FormArray = this.form.get('checkArray') as FormArray;
+    const checkedList: FormArray = this.filterForm.get('checkArray') as FormArray;
+    const checkedIdeaList: FormArray = this.filterForm.get('checkIdeaArray') as FormArray;
     let i: number = 0;
 
     while (checkedList.length > 0) {
       checkedList.removeAt(i);
+    }
+
+    while (checkedIdeaList.length > 0) {
+      checkedIdeaList.removeAt(i);
     }
     
     this.checkboxes.forEach((element) => {
@@ -59,24 +78,33 @@ export class IdeaCategoryMenuComponent implements OnInit {
 
     this.router.navigateByUrl('/ideas');
     console.log(checkedList.value);
+    console.log(checkedIdeaList.value);
   }
 
   submitForm() {
-    console.log(this.form.value['checkArray'])
-    this.router.navigateByUrl(`/search/${this.form.value['checkArray']}/true`)
+    const categoryIdsArray = this.filterForm.value['checkArray'];
+    const isIdeaArray = this.filterForm.value['checkIdeaArray'];
+    const urlCategoriesAndIdea: string = `/filter/${categoryIdsArray}/${isIdeaArray}`;
+    const urlCategories: string = `/filter/${categoryIdsArray}`;
+
+    if (isIdeaArray.length != 1 && categoryIdsArray.length == 0) {
+      this.router.navigateByUrl('/ideas');
+    } else if (isIdeaArray.length != 1 ) {
+      this.router.navigateByUrl(urlCategories);
+    } else {
+      this.router.navigateByUrl(urlCategoriesAndIdea);
+    }
   }
 
   listIdeaCategories() {
     this.ideaService.getIdeaCategories().subscribe(
       data => {
         this.ideaCategories = data;
-        // console.log(this.ideaCategories);
       }
     );
   }
 
   doSearch(value: string) {
-    // console.log("value= " + value);
     // Route the data to our "search" route. It will be handled by the IdeaListComponent
     this.router.navigateByUrl(`/search/${value}`);
   }
