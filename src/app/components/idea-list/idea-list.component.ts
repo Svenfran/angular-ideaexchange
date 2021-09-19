@@ -24,12 +24,13 @@ export class IdeaListComponent implements OnInit {
     const hasCategoryId: boolean = this.route.snapshot.paramMap.has('id');
     const hasQuery: boolean = this.route.snapshot.paramMap.has('query');
     const hasCategoryIds: boolean = this.route.snapshot.paramMap.has('categoryIds');
+    const hasIsIeea: boolean = this.route.snapshot.paramMap.has('isIdea');
     
     if (hasCategoryId) {
       this.listIdeasByCategory();
     } else if (hasQuery) {
       this.handleSearchIdeas();
-    } else if (hasCategoryIds) {
+    } else if (hasCategoryIds || hasIsIeea) {
       this.handleFilterIdeas();
     } else {
       this.listAllIdeas();
@@ -43,13 +44,16 @@ export class IdeaListComponent implements OnInit {
   
   handleFilterIdeas() {
     const theCategoryIds: string = this.route.snapshot.paramMap.get('categoryIds');
+    const hasCategoryIds: boolean = this.route.snapshot.paramMap.has('categoryIds');
     const boolIsIdea: string = this.route.snapshot.paramMap.get('isIdea');
     const hasIsIdea: boolean = this.route.snapshot.paramMap.has('isIdea');
-    console.log("handleFilterIdeas Url has isIdea: " + hasIsIdea);
-    if (hasIsIdea) {
+    
+    if (hasIsIdea && hasCategoryIds) {
       this.ideaService.filterIdeasByCategoryIdsAndIdea(theCategoryIds, boolIsIdea).subscribe(this.processResult());
-    } else {
+    } else if (hasCategoryIds && !hasIsIdea){
       this.ideaService.filterIdeasByCategoryIds(theCategoryIds).subscribe(this.processResult());
+    } else {
+      this.ideaService.filterIdeasByIsIdea(boolIsIdea).subscribe(this.processResult());
     }
   }
 
@@ -65,7 +69,6 @@ export class IdeaListComponent implements OnInit {
   processResult() {
     return data => {
       this.ideas = data;
-      // console.log(this.ideas);
     };
   }
 

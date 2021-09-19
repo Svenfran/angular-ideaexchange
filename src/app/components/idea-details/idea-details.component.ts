@@ -13,7 +13,9 @@ export class IdeaDetailsComponent implements OnInit {
 
   idea: Idea = new Idea();
 
-  constructor(private ideaService: IdeaService, private route: ActivatedRoute, private router: Router) { }
+  constructor(private ideaService: IdeaService,
+              private route: ActivatedRoute,
+              private router: Router) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe(() => {
@@ -52,7 +54,6 @@ export class IdeaDetailsComponent implements OnInit {
     }
 
   }
-
 
   onOpenModal(idea: Idea, mode: string): void {
     const container = document.getElementById("main-container")

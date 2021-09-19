@@ -18,6 +18,7 @@ const routes: Routes = [
   { path: 'ideas/:id', component: IdeaDetailsComponent },
   { path: 'ideas/delete/:id', component: IdeaDetailsComponent },
   { path: 'ideas', component: IdeaListComponent },
+  { path: 'filter/isIdea/:isIdea', component: IdeaListComponent },
   { path: 'filter/:categoryIds/:isIdea', component: IdeaListComponent },
   { path: 'filter/:categoryIds', component: IdeaListComponent },
   { path: 'search/:query', component: IdeaListComponent },

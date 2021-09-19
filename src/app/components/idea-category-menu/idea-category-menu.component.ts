@@ -77,8 +77,6 @@ export class IdeaCategoryMenuComponent implements OnInit {
     });
 
     this.router.navigateByUrl('/ideas');
-    console.log(checkedList.value);
-    console.log(checkedIdeaList.value);
   }
 
   submitForm() {
@@ -86,11 +84,16 @@ export class IdeaCategoryMenuComponent implements OnInit {
     const isIdeaArray = this.filterForm.value['checkIdeaArray'];
     const urlCategoriesAndIdea: string = `/filter/${categoryIdsArray}/${isIdeaArray}`;
     const urlCategories: string = `/filter/${categoryIdsArray}`;
+    const urlIsIdea: string = `/filter/isIdea/${isIdeaArray}`;
+
+    //TODO: change phath naming!!
 
     if (isIdeaArray.length != 1 && categoryIdsArray.length == 0) {
       this.router.navigateByUrl('/ideas');
     } else if (isIdeaArray.length != 1 ) {
       this.router.navigateByUrl(urlCategories);
+    } else if (isIdeaArray.length == 1 && categoryIdsArray == 0) {
+      this.router.navigateByUrl(urlIsIdea);
     } else {
       this.router.navigateByUrl(urlCategoriesAndIdea);
     }
