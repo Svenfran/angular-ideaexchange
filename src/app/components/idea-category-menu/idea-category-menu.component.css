@@ -36,3 +36,18 @@
 .clear-btn i {
     top: 7px;
 }
+
+.cb {
+    cursor: pointer;
+    padding: 0 5px;
+}
+
+.cb > input {
+    display: none;
+}
+
+.cb-checked {
+    background: #0091ad;
+    color: white;
+    border-radius: 3px;
+}

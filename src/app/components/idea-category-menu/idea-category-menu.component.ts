@@ -3,13 +3,13 @@ import { Router } from '@angular/router';
 import { Category } from 'src/app/common/category';
 import { IdeaService } from 'src/app/services/idea.service';
 import { FormBuilder, FormGroup, FormArray, FormControl, Validators, ɵNgNoValidate } from '@angular/forms';
-import { element } from 'protractor';
 
 @Component({
   selector: 'app-idea-category-menu',
   templateUrl: './idea-category-menu.component.html',
   styleUrls: ['./idea-category-menu.component.css']
 })
+
 export class IdeaCategoryMenuComponent implements OnInit {
 
   ideaCategories: Category[];
@@ -19,24 +19,22 @@ export class IdeaCategoryMenuComponent implements OnInit {
 
   constructor(private ideaService: IdeaService, private router: Router, private fb: FormBuilder) { 
     this.filterForm = this.fb.group({
-      checkArray: this.fb.array([]),
+      checkCategoryArray: this.fb.array([]),
       checkIdeaArray: this.fb.array([])
     })
   }
-  
   
   ngOnInit(): void {
     this.listIdeaCategories();
   }
 
-
   onCategoryCheckboxChange(e) {
-    const checkArray: FormArray = this.filterForm.get('checkArray') as FormArray;
+    const checkCategoryArray: FormArray = this.filterForm.get('checkCategoryArray') as FormArray;
     if (e.target.checked) {
-      checkArray.push(new FormControl(e.target.value));
-    } else {
-      this.removeItem(checkArray, e);
-    }
+      checkCategoryArray.push(new FormControl(e.target.value));
+    } else { 
+      this.removeItem(checkCategoryArray, e);
+    };
   }
 
   onIdeaCheckboxChange(e) {
@@ -45,7 +43,7 @@ export class IdeaCategoryMenuComponent implements OnInit {
       checkIdeaArray.push(new FormControl(e.target.value));
     } else {
       this.removeItem(checkIdeaArray, e);
-    }
+    };
   }
 
   removeItem(array: FormArray, e: any) {
@@ -60,33 +58,31 @@ export class IdeaCategoryMenuComponent implements OnInit {
   }
 
   uncheckAll() {
-    const checkedList: FormArray = this.filterForm.get('checkArray') as FormArray;
+    const checkedList: FormArray = this.filterForm.get('checkCategoryArray') as FormArray;
     const checkedIdeaList: FormArray = this.filterForm.get('checkIdeaArray') as FormArray;
-    let i: number = 0;
+    checkedList.clear();
+    checkedIdeaList.clear();
 
-    while (checkedList.length > 0) {
-      checkedList.removeAt(i);
-    }
-
-    while (checkedIdeaList.length > 0) {
-      checkedIdeaList.removeAt(i);
-    }
-    
     this.checkboxes.forEach((element) => {
       element.nativeElement.checked = false;
+    });
+
+    const cbChecked = document.querySelectorAll('.cb-checked');
+    cbChecked.forEach(cb => {
+      cb.classList.remove('cb-checked');
     });
 
     this.router.navigateByUrl('/ideas');
   }
 
   submitForm() {
-    const categoryIdsArray = this.filterForm.value['checkArray'];
+    const categoryIdsArray = this.filterForm.value['checkCategoryArray'];
     const isIdeaArray = this.filterForm.value['checkIdeaArray'];
     const urlCategoriesAndIdea: string = `/filter/${categoryIdsArray}/${isIdeaArray}`;
     const urlCategories: string = `/filter/${categoryIdsArray}`;
     const urlIsIdea: string = `/filter/isIdea/${isIdeaArray}`;
 
-    //TODO: change phath naming!!
+    //TODO: change path naming!!
 
     if (isIdeaArray.length != 1 && categoryIdsArray.length == 0) {
       this.router.navigateByUrl('/ideas');

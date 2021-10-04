@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Renderer2 } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
@@ -12,6 +12,8 @@ import { IdeaDetailsComponent } from './components/idea-details/idea-details.com
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { CbCheckedDirective } from './directives/cb-checked.directive';
+import { RemoveAllCbCheckedDirective } from './directives/remove-all-cb-checked.directive';
 
 const routes: Routes = [
   { path: 'categories/:id/ideas', component: IdeaListComponent },
@@ -32,7 +34,9 @@ const routes: Routes = [
     IdeaListComponent,
     IdeaCategoryMenuComponent,
     TopNavbarComponent,
-    IdeaDetailsComponent
+    IdeaDetailsComponent,
+    CbCheckedDirective,
+    RemoveAllCbCheckedDirective
   ],
   imports: [
     RouterModule.forRoot(routes),

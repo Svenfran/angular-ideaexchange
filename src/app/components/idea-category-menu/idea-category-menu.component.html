@@ -11,34 +11,28 @@
             <i class="fa fa-times"></i>
         </div>
     </div>
-    
     <div class="d-flex flex-column">
-        <hr>
         <p><strong>Idea or Problem:</strong></p>
         <form [formGroup]="filterForm" (ngSubmit)="submitForm()" novalidate>
             <div class="d-flex justify-content-between">
-                <label class="cb">
-                    <input #checkbox type="checkbox" [value]="true" (change)="onIdeaCheckboxChange($event)"/>
-                    IDEA
+                <label appCbChecked class="cb" (change)="onIdeaCheckboxChange($event)">
+                    <input #checkbox type="checkbox" [value]="true"/> IDEA
                 </label>
-                <label class="cb">
-                    <input #checkbox type="checkbox"[value]="false" (change)="onIdeaCheckboxChange($event)"/>
-                    PROBLEM
+                <label appCbChecked class="cb" (change)="onIdeaCheckboxChange($event)">
+                    <input #checkbox type="checkbox"[value]="false"/> PROBLEM
                 </label>
             </div>
             <hr>
-            <p><strong>Categories:</strong></p>        
+            <p><strong>Categories:</strong></p>
             <div class="filter-categories mt-1">
-              <label *ngFor="let tempIdeaCategory of ideaCategories; let i = index">
-                  <input #checkbox type="checkbox" [value]="tempIdeaCategory.id" (change)="onCategoryCheckboxChange($event)"/>
+              <label appCbChecked class="cb" *ngFor="let tempIdeaCategory of ideaCategories; let i = index"
+                (change)="onCategoryCheckboxChange($event)">
+                  <input #checkbox type="checkbox" [value]="tempIdeaCategory.id"/>
                   {{ tempIdeaCategory.name }}
               </label>
             </div>
             <div class="d-flex align-items-center justify-content-between mt-3">
                 <input type="submit" value="Filter" class="btn btn-outline-dark btn-sm my-3">
-                <!-- <label style="cursor: pointer;">
-                    <input type="checkbox" (change)="uncheckAll()" style="display: none;">clear filter
-                </label> -->
                 <p (click)="uncheckAll()" class="m-0" style="cursor: pointer;">clear filter</p>
             </div>
         </form>
